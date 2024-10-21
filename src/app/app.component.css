@@ -1,0 +1,227 @@
+.container {
+    display: grid;
+    grid-template-columns: .6fr 3fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: "nav content";
+    min-height: 100vh;
+  }
+  
+  main {
+    grid-area: content;
+    padding: 2rem;
+  }
+  
+  nav {
+    grid-area: nav;
+    background-color: var(--base-clr);
+    padding: 5px .8rem;
+    width: 250px;
+    height: 100vh;
+    height: 100dvh;
+    box-sizing: border-box;
+    border-right: 1px solid var(--line-clr);
+    position: sticky;
+    top: 0;
+    align-self: start;
+    transition: 300ms ease-in-out;
+    overflow: hidden;
+    text-wrap: nowrap;
+    flex-wrap: wrap;
+  }
+  
+  nav.close {
+    padding: 5px;
+    width: 60px;
+  }
+  
+  nav>ul {
+    list-style: none;
+  }
+  
+  nav>ul>li:first-child {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 16px;
+  
+    .logo {
+      font-weight: 600;
+    }
+  }
+  
+  nav ul li.active a {
+    color: var(--accent-clr);
+  
+    svg {
+      fill: var(--accent-clr);
+    }
+  }
+  
+  nav a,
+  nav .dropdown-btn,
+  nav .logo {
+    border-radius: .5em;
+    padding: .85em;
+    text-decoration: none;
+    color: var(--text-clr);
+    display: flex;
+    align-items: center;
+    gap: 1.4em;
+  }
+  
+  .dropdown-btn {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+  }
+  
+  nav svg {
+    flex-shrink: 0;
+    fill: var(--text-clr);
+  }
+  
+  nav a span,
+  nav .dropdown-btn span {
+    flex-grow: 1;
+  }
+  
+  nav a:hover,
+  nav .dropdown-btn:hover {
+    background-color: var(--hover-clr);
+  }
+  
+  nav .sub-menu {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: 300ms ease-in-out;
+  
+    >div {
+      overflow: hidden;
+    }
+  }
+  
+  nav .sub-menu.show {
+    grid-template-rows: 1fr;
+  }
+  
+  .dropdown-btn svg {
+    transition: 200ms ease;
+  }
+  
+  .rotate svg:last-child {
+    rotate: 180deg;
+  }
+  
+  nav .sub-menu a {
+    padding-left: 2em;
+  }
+  
+  #toggle-btn {
+    margin-left: auto;
+    padding: 1em;
+    border: none;
+    border-radius: .5em;
+    background: none;
+    cursor: pointer;
+  
+    svg {
+      transition: rotate 150ms ease;
+    }
+  }
+  
+  #toggle-btn:hover {
+    background-color: var(--hover-clr);
+  }
+  
+  
+  @media screen and (max-width: 800px) {
+    .container {
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr minmax(5rem, auto);
+      grid-template-areas:
+        "content"
+        "nav";
+    }
+  
+    nav {
+      height: 60px;
+      width: 100%;
+      position: fixed;
+      bottom: 0;
+      z-index: 999999;
+    }
+  
+    main {
+      padding: 2em 1em 60px 1em;
+    }
+  
+    nav {
+      height: 60px;
+      width: 100%;
+      border-right: none;
+      border-top: 1px solid var(--line-clr);
+      padding: 0;
+      position: fixed;
+      top: unset;
+      bottom: 0;
+  
+      >ul {
+        padding: 0;
+        display: grid;
+        grid-auto-columns: 60px;
+        grid-auto-flow: column;
+        align-items: center;
+        overflow-x: scroll;
+      }
+  
+      ul li {
+        height: 100%;
+      }
+  
+      ul a,
+      ul .dropdown-btn {
+        width: 60px;
+        height: 60px;
+        padding: 0;
+        border-radius: 0;
+        justify-content: center;
+      }
+  
+      ul li span,
+      ul li:first-child,
+      .dropdown-btn svg:last-child {
+        display: none;
+      }
+  
+      ul li .sub-menu.show {
+        position: fixed;
+        bottom: 60px;
+        left: 0;
+        box-sizing: border-box;
+        height: 60px;
+        width: 100%;
+        background-color: var(--hover-clr);
+        border-top: 1px solid var(--line-clr);
+        display: flex;
+        justify-content: center;
+  
+        >div {
+          overflow-x: auto;
+        }
+  
+        li {
+          display: inline-flex;
+        }
+  
+        a {
+          box-sizing: border-box;
+          padding: 1em;
+          width: auto;
+          justify-content: center;
+        }
+      }
+    }
+  
+  }
