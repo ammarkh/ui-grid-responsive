@@ -1,0 +1,31 @@
+<div nz-row nzGutter="24" style="display: grid; padding: 1rem; margin: 1rem">
+  <div nz-col nzSpan="24" class="list-info">
+    @for (item of loanRequestList; track $index) {
+    <nz-card>
+      <nz-descriptions nzTitle="{{ item.date }}" nzBordered>
+        <nz-descriptions-item nzTitle="Date">
+          {{ item.id }}
+        </nz-descriptions-item>
+        <nz-descriptions-item nzTitle="Branch">
+          {{ item.branch }}
+        </nz-descriptions-item>
+        <nz-descriptions-item nzTitle="Loan Cost">
+          {{ item.loanCost }}
+        </nz-descriptions-item>
+        <nz-descriptions-item nzTitle="Status">
+          {{ item.status }}
+        </nz-descriptions-item>
+      </nz-descriptions>
+    </nz-card>
+    <!--
+      <ng-template #extraTemplate>
+        <a>More</a>
+      </ng-template> -->
+    }
+  </div>
+</div>
+<nz-divider></nz-divider>
+
+<button nz-button (click)="click($event)" type="button" nzShape="round" nzType="primary">
+  click
+</button>

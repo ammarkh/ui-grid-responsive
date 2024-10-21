@@ -9,8 +9,8 @@
   main {
     grid-area: content;
     padding: 2rem;
-    height:100vh;
-    background-color: var(--accent-clr);
+    /* height:100vh; */
+    /* background-color: var(--accent-clr); */
   }
   
   nav {
@@ -156,7 +156,7 @@
     }
   
     main {
-      padding: 2em 1em 60px 1em;
+      padding: 2em 1em 70px 1em;
     }
   
     nav {
